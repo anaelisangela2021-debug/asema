@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exploradores do Espaço — Histórias Ilustradas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="historias-criancas.css" />
+</head>
+<body>
+
+  <!-- CENÁRIO ESPACIAL DE FUNDO -->
+  <div class="kids-space-bg" aria-hidden="true">
+    <div class="twinkle-stars"></div>
+    <div class="bg-moon">
+      <span class="crater cr1"></span>
+      <span class="crater cr2"></span>
+      <span class="crater cr3"></span>
+    </div>
+    <div class="bg-jupiter"></div>
+    <div class="bg-earth">
+      <div class="earth-continent c-a"></div>
+      <div class="earth-continent c-b"></div>
+    </div>
+    <div class="lunar-horizon"></div>
+  </div>
+
+  <!-- CABEÇALHO SUPERIOR -->
+  <header class="kids-topbar">
+    <a href="painel-criancas.html" class="brand-area" title="Voltar para o Painel Crianças">
+      <svg class="nasa-meatball" viewBox="0 0 120 100" aria-hidden="true">
+        <circle cx="60" cy="50" r="44" fill="#105bd8" />
+        <path d="M18 66 C 42 84, 92 64, 102 26 C 86 58, 44 74, 18 66 Z" fill="#ffffff" />
+        <path d="M14 68 L 54 14 L 66 56 L 106 20 L 63 65 L 51 27 Z" fill="#fc3d21" />
+        <text x="60" y="56" text-anchor="middle" fill="#ffffff" font-family="Georgia, serif" font-weight="900" font-size="22" letter-spacing="1.2">NASA</text>
+      </svg>
+      <span class="brand-sep"></span>
+      <span class="brand-title">
+        <strong>Exploradores</strong>
+        <strong>do Espaço</strong>
+      </span>
+      <svg class="brand-star" viewBox="0 0 24 24" fill="#facc15" aria-hidden="true">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      </svg>
+    </a>
+
+    <!-- Barra de Pesquisa Rápida -->
+    <div class="search-filter-bar">
+      <div class="search-pill">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7" />
+          <line x1="20" y1="20" x2="16.2" y2="16.2" />
+        </svg>
+        <input
+          type="search"
+          id="input-busca-historia"
+          placeholder="Buscar robô, espelho, sonda..."
+          aria-label="Buscar história espacial"
+          autocomplete="off"
+        />
+      </div>
+    </div>
+
+    <!-- Avatar TEX -->
+    <div class="profile-wrapper">
+      <a href="painel-criancas.html" class="profile-avatar-btn" title="Voltar ao Início">
+        <div class="avatar-circle">
+          <img
+            id="avatar-tex-img"
+            src="tex.jpg"
+            data-fallbacks="tex.png,tex.jpeg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.jpg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.png"
+            alt="Mascote TEX"
+          />
+        </div>
+        <span id="header-user-name" class="header-user-tag">Explorador(a)</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- LAYOUT PRINCIPAL -->
+  <div class="dashboard-layout">
+    <!-- SIDEBAR LATERAL (INÍCIO, LUA, MARTE, JOGOS) -->
+    <aside class="sidebar-column">
+      <nav class="kids-sidebar" aria-label="Menu de navegação">
+        <a href="painel-criancas.html" class="side-link" id="nav-inicio">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z" />
+          </svg>
+          <span>Início</span>
+        </a>
+
+        <button type="button" class="side-link" id="nav-lua" data-local="lua">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z" />
+          </svg>
+          <span>Lua</span>
+        </button>
+
+        <button type="button" class="side-link" id="nav-marte" data-local="marte">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="9" />
+          </svg>
+          <span>Marte</span>
+        </button>
+
+        <a href="jogos-criancas.html" class="side-link" id="nav-jogos">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+          </svg>
+          <span>Jogos</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ÁREA CENTRAL DE HISTÓRIAS -->
+    <main class="center-stage">
+
+      <!-- =========================================================
+           VISÃO 1: CATÁLOGO DE MINI-HISTÓRIAS (CHAMADAS ILUSTRADAS)
+           ========================================================= -->
+      <section id="catalogo-view" class="catalogo-section">
+        <!-- Cabeçalho com TEX e Filtros Lua / Marte -->
+        <div class="catalogo-hero">
+          <div class="tex-guide-card">
+            <img
+              id="tex-catalogo-img"
+              src="tex.jpg"
+              data-fallbacks="tex.png,tex.jpeg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.jpg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.png"
+              alt="Mascote TEX"
+              class="tex-guide-img"
+            />
+            <div class="tex-speech-comic">
+              <span class="comic-tag">DIÁRIO EM QUADRINHOS DO TEX</span>
+              <h1 id="catalogo-titulo">Histórias da Lua e de Marte!</h1>
+              <p id="catalogo-subtitulo">
+                Escolha uma mini-história abaixo para abrir os quadrinhos animados, ouvir a narração em áudio ou traduzir em Libras!
+              </p>
+            </div>
+          </div>
+
+          <!-- Abas de Filtro -->
+          <div class="local-tabs" role="tablist" aria-label="Filtrar histórias por planeta">
+            <button type="button" class="local-tab active" data-filter="todos">🌌 Todas (7)</button>
+            <button type="button" class="local-tab" data-filter="lua">🌕 Lua (2)</button>
+            <button type="button" class="local-tab" data-filter="marte">🔴 Marte (5)</button>
+          </div>
+        </div>
+
+        <!-- Grid com as Mini-Histórias (Introduções para chamar atenção) -->
+        <div id="stories-cards-grid" class="stories-cards-grid"></div>
+      </section>
+
+      <!-- =========================================================
+           VISÃO 2: LEITOR DE QUADRINHOS / HISTÓRIA ILUSTRADA + ÁUDIO + LIBRAS
+           ========================================================= -->
+      <section id="leitor-view" class="leitor-section hidden" aria-live="polite">
+        <!-- Barra Superior do Leitor -->
+        <div class="reader-toolbar">
+          <button type="button" id="btn-voltar-catalogo" class="btn-back-stories">
+            ← Voltar às Histórias
+          </button>
+
+          <!-- Controles de Áudio (Narrador lendo a história) e Libras -->
+          <div class="accessibility-controls">
+            <button type="button" id="btn-audio-play" class="acc-btn btn-audio-main">
+              🔊 Ouvir História
+            </button>
+            <button type="button" id="btn-audio-pause" class="acc-btn hidden">
+              ⏸️ Pausar
+            </button>
+            <button type="button" id="btn-audio-stop" class="acc-btn hidden">
+              ⏹️ Parar
+            </button>
+            <button type="button" id="btn-audio-speed" class="acc-btn" title="Mudar velocidade da leitura">
+              🐢 Vel: 1.0x
+            </button>
+            <button type="button" id="btn-ativar-libras" class="acc-btn btn-libras-highlight">
+              🖐️ Traduzir em Libras
+            </button>
+          </div>
+        </div>
+
+        <!-- Cabeçalho da História Aberta + Comentário do TEX -->
+        <div class="story-comic-header">
+          <div class="story-title-block">
+            <div class="story-badges-row" id="reader-badges"></div>
+            <h2 id="reader-title" class="comic-big-title">Título da História</h2>
+            <p id="reader-subtitle" class="reader-mission-name">Missão NASA</p>
+            <div id="reader-teaser-box" class="reader-teaser-callout"></div>
+          </div>
+
+          <div class="reader-tex-box">
+            <img
+              id="tex-reader-img"
+              src="tex.jpg"
+              data-fallbacks="tex.png,tex.jpeg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.jpg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.png"
+              alt="Mascote TEX comentando"
+              class="reader-tex-img"
+            />
+            <div class="reader-tex-bubble" id="reader-tex-comment">
+              Clique em <strong>Ouvir História</strong> para eu ler junto com você!
+            </div>
+          </div>
+        </div>
+
+        <!-- Barra de Status do Narrador -->
+        <div id="audio-status-bar" class="audio-status-bar hidden">
+          <span class="sound-wave-icon">🎙️</span>
+          <span id="audio-status-text">Lendo a história em voz alta...</span>
+        </div>
+
+        <!-- TIRA DE QUADRINHOS ILUSTRADOS (CENAS DA HISTÓRIA) -->
+        <div id="comic-panels-container" class="comic-panels-grid"></div>
+
+        <!-- QUADRO "FATOS DE VERDADE" -->
+        <aside class="true-facts-card">
+          <div class="true-facts-header">
+            <span class="facts-badge">⭐ FATOS DE VERDADE • ARQUIVO NASA</span>
+            <h3>O que realmente aconteceu nessa missão?</h3>
+          </div>
+          <ul id="reader-facts-list" class="true-facts-list"></ul>
+        </aside>
+
+        <!-- Navegação entre Histórias -->
+        <div class="reader-footer-nav">
+          <button type="button" id="btn-prev-story" class="nav-story-btn">⬅️ História Anterior</button>
+          <a href="jogos-criancas.html" class="nav-story-btn btn-go-games">🎮 Ir para Jogos</a>
+          <button type="button" id="btn-next-story" class="nav-story-btn">Próxima História ➡️</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="historias-criancas.js"></script>
+  <script src="libras.js"></script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exploradores do Espaço — Painel Crianças</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="painel-criancas.css" />
+</head>
+<body>
+
+  <!-- CENÁRIO ESPACIAL ILUSTRADO DE FUNDO -->
+  <div class="kids-space-bg" aria-hidden="true">
+    <div class="twinkle-stars"></div>
+
+    <!-- Lua grande ilustrada no canto superior esquerdo -->
+    <div class="bg-moon">
+      <span class="crater cr1"></span>
+      <span class="crater cr2"></span>
+      <span class="crater cr3"></span>
+      <span class="crater cr4"></span>
+      <span class="crater cr5"></span>
+    </div>
+
+    <!-- Planeta gasoso listrado no canto superior direito -->
+    <div class="bg-jupiter"></div>
+
+    <!-- Foguete colorido voando no canto direito -->
+    <svg class="bg-rocket" viewBox="0 0 140 140">
+      <g transform="rotate(35 70 70)">
+        <path d="M56 102 Q 70 136 84 102 Z" fill="#f97316" />
+        <path d="M62 102 Q 70 124 78 102 Z" fill="#fde047" />
+        <path d="M48 76 L 30 98 L 50 94 Z" fill="#ef4444" />
+        <path d="M92 76 L 110 98 L 90 94 Z" fill="#ef4444" />
+        <path d="M50 96 L 50 48 C 50 24, 70 12, 70 12 C 70 12, 90 24, 90 48 L 90 96 Z" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+        <path d="M53 38 C 58 20, 70 12, 70 12 C 70 12, 82 20, 87 38 Z" fill="#ef4444" />
+        <circle cx="70" cy="56" r="12" fill="#38bdf8" stroke="#1e3a8a" stroke-width="3.5" />
+        <circle cx="66" cy="52" r="3.5" fill="#ffffff" opacity="0.85" />
+      </g>
+    </svg>
+
+    <!-- Planeta Terra surgindo atrás do painel à direita -->
+    <div class="bg-earth">
+      <div class="earth-continent c-a"></div>
+      <div class="earth-continent c-b"></div>
+      <div class="earth-cloud cl-a"></div>
+    </div>
+
+    <!-- Solo lunar com crateras na base -->
+    <div class="lunar-horizon">
+      <span class="ground-crater gc1"></span>
+      <span class="ground-crater gc2"></span>
+      <span class="ground-crater gc3"></span>
+      <span class="ground-crater gc4"></span>
+      <span class="ground-crater gc5"></span>
+    </div>
+  </div>
+
+  <!-- CABEÇALHO SUPERIOR -->
+  <header class="kids-topbar">
+    <!-- Logo NASA | Exploradores do Espaço ⭐ -->
+    <a href="index.html" class="brand-area" title="Voltar para a tela inicial">
+      <svg class="nasa-meatball" viewBox="0 0 120 100" aria-hidden="true">
+        <circle cx="60" cy="50" r="44" fill="#105bd8" />
+        <circle cx="38" cy="30" r="1.4" fill="#fff" />
+        <circle cx="75" cy="26" r="1.4" fill="#fff" />
+        <circle cx="33" cy="64" r="1.3" fill="#fff" />
+        <circle cx="72" cy="74" r="1.3" fill="#fff" />
+        <path d="M18 66 C 42 84, 92 64, 102 26 C 86 58, 44 74, 18 66 Z" fill="#ffffff" />
+        <path d="M14 68 L 54 14 L 66 56 L 106 20 L 63 65 L 51 27 Z" fill="#fc3d21" />
+        <text x="60" y="56" text-anchor="middle" fill="#ffffff" font-family="Georgia, serif" font-weight="900" font-size="22" letter-spacing="1.2">NASA</text>
+      </svg>
+      <span class="brand-sep"></span>
+      <span class="brand-title">
+        <strong>Exploradores</strong>
+        <strong>do Espaço</strong>
+      </span>
+      <svg class="brand-star" viewBox="0 0 24 24" fill="#facc15" aria-hidden="true">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      </svg>
+    </a>
+
+    <!-- Barra de Pesquisa + Filtro no Topo -->
+    <div class="search-filter-bar">
+      <div class="search-pill">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7" />
+          <line x1="20" y1="20" x2="16.2" y2="16.2" />
+        </svg>
+        <input
+          type="search"
+          id="input-pesquisa"
+          placeholder="Pesquisar na Lua ou Marte..."
+          aria-label="Pesquisar equipamentos espaciais"
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="filter-wrapper">
+        <button type="button" id="btn-filtros" class="filter-pill" aria-expanded="false" aria-haspopup="true">
+          <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+          </svg>
+          <span id="filtro-label">Filtros</span>
+          <span class="chevron">⌄</span>
+        </button>
+
+        <!-- Dropdown de Filtros (Lua e Marte) -->
+        <div id="dropdown-filtros" class="filter-dropdown hidden" role="menu">
+          <p class="filter-dropdown-title">Filtrar missões por:</p>
+          <button type="button" class="filter-option active" data-filter="todos">🌌 Todos (Lua e Marte)</button>
+          <button type="button" class="filter-option" data-filter="lua">🌕 Lua</button>
+          <button type="button" class="filter-option" data-filter="marte">🔴 Marte</button>
+          <hr />
+          <button type="button" class="filter-option" data-filter="ativo">🟢 Ainda Ativos</button>
+          <button type="button" class="filter-option" data-filter="esquecido">💤 Esquecidos</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Avatar com a imagem do TEX no Canto Superior Direito -->
+    <div class="profile-wrapper">
+      <button type="button" id="btn-perfil" class="profile-avatar-btn" aria-expanded="false" title="Perfil do Explorador">
+        <div class="avatar-circle">
+          <img
+            id="avatar-tex-img"
+            src="tex.jpg"
+            data-fallbacks="tex.png,tex.jpeg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.jpg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.png"
+            alt="Avatar do mascote TEX"
+          />
+        </div>
+        <span class="profile-chevron">⌄</span>
+      </button>
+
+      <!-- Menu de Perfil / Sessão -->
+      <div id="dropdown-perfil" class="profile-dropdown hidden">
+        <div class="profile-info-header">
+          <strong id="perfil-nome-display">Explorador(a)</strong>
+          <span id="perfil-status-badge" class="status-pill-visitor">Modo Só Conhecer</span>
+        </div>
+        <button type="button" id="btn-abrir-login-rapido" class="profile-menu-btn">🚀 Iniciar Sessão</button>
+        <a href="painel-jovens.html" class="profile-menu-link">⚛️ Trocar para Interface Jovens</a>
+        <a href="index.html" class="profile-menu-link">🏠 Voltar para Tela Inicial</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ÁREA PRINCIPAL: SIDEBAR LATERAL + DASHBOARD -->
+  <div class="dashboard-layout">
+    <!-- MENU LATERAL (APENAS INÍCIO, LUA, MARTE E JOGOS) -->
+    <aside class="sidebar-column">
+      <nav class="kids-sidebar" aria-label="Menu da interface crianças">
+        <a href="painel-criancas.html" class="side-link active">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z" />
+          </svg>
+          <span>Início</span>
+        </a>
+
+        <a href="historias-criancas.html?local=lua" class="side-link">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z" />
+          </svg>
+          <span>Lua</span>
+        </a>
+
+        <a href="historias-criancas.html?local=marte" class="side-link">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="9" />
+          </svg>
+          <span>Marte</span>
+        </a>
+
+        <a href="jogos-criancas.html" class="side-link">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+          </svg>
+          <span>Jogos</span>
+        </a>
+      </nav>
+
+      <!-- Emblema NASA na base esquerda -->
+      <div class="sidebar-nasa-patch" aria-hidden="true">
+        <svg viewBox="0 0 120 100">
+          <circle cx="60" cy="50" r="44" fill="#105bd8" stroke="#ffffff" stroke-width="3" />
+          <path d="M18 66 C 42 84, 92 64, 102 26 C 86 58, 44 74, 18 66 Z" fill="#ffffff" />
+          <path d="M14 68 L 54 14 L 66 56 L 106 20 L 63 65 L 51 27 Z" fill="#fc3d21" />
+          <text x="60" y="56" text-anchor="middle" fill="#ffffff" font-family="Georgia, serif" font-weight="900" font-size="22">NASA</text>
+        </svg>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO CENTRAL -->
+    <main class="center-stage">
+      <!-- TOPO COM A IMAGEM DO MASCOTE TEX E SAUDAÇÃO -->
+      <section class="greeting-row">
+        <div class="tex-peeking-box" id="tex-peeking" role="button" tabindex="0" title="Clique para ouvir uma dica do TEX!">
+          <div class="tex-bubble" id="tex-bubble">
+            Escolha <strong>Lua</strong>, <strong>Marte</strong> ou <strong>Jogos</strong> para começar a aventura! 🚀
+          </div>
+
+          <img
+            id="tex-mascot-img"
+            src="tex.jpg"
+            data-fallbacks="tex.png,tex.jpeg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.jpg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.png"
+            alt="Mascote TEX, o texugo astronauta da NASA"
+            class="tex-mascot-img"
+          />
+        </div>
+
+        <!-- Título de Boas-Vindas -->
+        <div class="greeting-text-box">
+          <h1 class="greeting-title">
+            Olá, <span id="greeting-nome" class="text-yellow">Explorador(a)!</span>
+          </h1>
+          <p class="greeting-subtitle">
+            Prepare-se para descobrir<br />
+            os mistérios do espaço!
+          </p>
+        </div>
+      </section>
+
+      <!-- PAINEL AZUL TRANSLÚCIDO PRINCIPAL (SOMENTE LUA, MARTE E JOGOS) -->
+      <section class="main-glass-panel" aria-label="Menu de exploração espacial">
+        <div class="panel-heading">
+          <svg class="heading-star" viewBox="0 0 24 24" fill="#facc15" aria-hidden="true">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+          <h2>Escolha sua <span class="text-yellow">Missão:</span></h2>
+          <svg class="heading-star" viewBox="0 0 24 24" fill="#facc15" aria-hidden="true">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+        </div>
+
+        <!-- OS 3 CARDS PRINCIPAIS: LUA, MARTE E JOGOS -->
+        <div class="three-cards-grid">
+          <!-- 1. LUA -->
+          <a href="historias-criancas.html?local=lua" class="dest-card card-lua">
+            <div class="dest-art">
+              <svg viewBox="0 0 160 130">
+                <circle cx="24" cy="24" r="2.5" fill="#fde047" />
+                <circle cx="134" cy="22" r="3" fill="#fde047" />
+                <circle cx="128" cy="102" r="2" fill="#fff" />
+                <circle cx="80" cy="64" r="46" fill="#e2e8f0" />
+                <circle cx="62" cy="48" r="10" fill="#94a3b8" />
+                <circle cx="96" cy="56" r="13" fill="#94a3b8" />
+                <circle cx="72" cy="82" r="8" fill="#94a3b8" />
+                <circle cx="100" cy="85" r="6" fill="#94a3b8" />
+              </svg>
+            </div>
+            <span class="yellow-pill-label">Lua</span>
+            <p class="card-mini-desc">Robôs e espelhos que ficaram na Lua</p>
+          </a>
+
+          <!-- 2. MARTE -->
+          <a href="historias-criancas.html?local=marte" class="dest-card card-marte">
+            <div class="dest-art">
+              <svg viewBox="0 0 160 130">
+                <circle cx="28" cy="22" r="2.5" fill="#fde047" />
+                <circle cx="132" cy="30" r="2.5" fill="#fff" />
+                <circle cx="80" cy="64" r="46" fill="#ea580c" />
+                <ellipse cx="68" cy="54" rx="18" ry="9" fill="#9a3412" transform="rotate(-18 68 54)" />
+                <ellipse cx="94" cy="80" rx="15" ry="8" fill="#9a3412" />
+                <circle cx="62" cy="82" r="5" fill="#c2410c" />
+              </svg>
+            </div>
+            <span class="yellow-pill-label">Marte</span>
+            <p class="card-mini-desc">Jipes e exploradores do Planeta Vermelho</p>
+          </a>
+
+          <!-- 3. JOGOS -->
+          <a href="jogos-criancas.html" class="dest-card card-jogos">
+            <div class="dest-art">
+              <svg viewBox="0 0 160 130">
+                <circle cx="28" cy="24" r="2.5" fill="#fde047" />
+                <circle cx="132" cy="26" r="2.5" fill="#fde047" />
+                <path d="M40 48 C 24 48, 16 80, 26 94 C 34 104, 48 90, 58 82 L 102 82 C 112 90, 126 104, 134 94 C 144 80, 136 48, 120 48 Z" fill="#f8fafc" stroke="#1e293b" stroke-width="3" />
+                <path d="M52 58 v18 M43 67 h18" stroke="#1e293b" stroke-width="5.5" stroke-linecap="round" />
+                <circle cx="108" cy="60" r="4.5" fill="#3b82f6" />
+                <circle cx="117" cy="67" r="4.5" fill="#ef4444" />
+                <circle cx="99" cy="67" r="4.5" fill="#eab308" />
+                <circle cx="108" cy="74" r="4.5" fill="#22c55e" />
+              </svg>
+            </div>
+            <span class="yellow-pill-label">Jogos</span>
+            <p class="card-mini-desc">Brinque e teste o que você aprendeu</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- PÍLULA INFERIOR DIREITA COM PATINHA DO TEXUGO -->
+      <div class="paw-toast-container">
+        <button type="button" id="btn-paw-tip" class="paw-toast-pill">
+          <svg class="paw-icon" viewBox="0 0 24 24" fill="#1e3a8a" aria-hidden="true">
+            <circle cx="6.5" cy="9.5" r="2.2" />
+            <circle cx="10" cy="6" r="2.2" />
+            <circle cx="14" cy="6" r="2.2" />
+            <circle cx="17.5" cy="9.5" r="2.2" />
+            <path d="M12 11c-3 0-5.5 2.2-5.5 4.8 0 1.7 1.4 2.7 3 2.7 1 0 1.6-.4 2.5-.4s1.5.4 2.5.4c1.6 0 3-1 3-2.7 0-2.6-2.5-4.8-5.5-4.8z" />
+          </svg>
+          <span>Com a ajuda do Texugo, explorar ficou ainda mais divertido!</span>
+        </button>
+      </div>
+    </main>
+  </div>
+
+  <!-- GAVETA DE RESULTADOS DA PESQUISA / FILTROS -->
+  <div id="search-results-drawer" class="results-drawer hidden" role="dialog" aria-label="Equipamentos encontrados">
+    <div class="results-card">
+      <div class="results-header">
+        <div>
+          <span class="results-tag">CATÁLOGO NASA • LUA E MARTE</span>
+          <h3 id="results-title">Equipamentos no Espaço</h3>
+        </div>
+        <button type="button" id="btn-fechar-resultados" class="close-drawer-btn" aria-label="Fechar resultados">×</button>
+      </div>
+      <div id="results-grid" class="results-grid"></div>
+    </div>
+  </div>
+
+  <!-- MODAL DE SESSÃO RÁPIDA -->
+  <div id="modal-acesso-restrito" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="titulo-sessao-rapida">
+    <div class="modal-lock-card">
+      <button type="button" id="btn-fechar-bloqueio" class="close-drawer-btn" aria-label="Fechar">×</button>
+      <div class="lock-icon-badge">🚀</div>
+      <h3 id="titulo-sessao-rapida">Salvar seu Nome de Explorador</h3>
+      <p id="texto-bloqueio">
+        Digite seu nome abaixo para personalizar sua jornada pela <strong>Lua</strong>, <strong>Marte</strong> e <strong>Jogos</strong>:
+      </p>
+      <form id="form-login-rapido" class="quick-login-form">
+        <input type="text" id="input-nome-rapido" placeholder="Seu nome de explorador(a)" required maxlength="24" />
+        <button type="submit" class="btn-unlock">Salvar Nome 🚀</button>
+      </form>
+    </div>
+  </div>
+
+ <script src="painel-criancas.js"></script>
+  <script src="libras.js"></script>
+</body>
+</html>

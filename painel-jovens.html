@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exploradores do Espaço — Central Jovens NASA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="painel-jovens.css" />
+</head>
+<body>
+
+  <!-- FUNDO ESPACIAL PROFUNDO -->
+  <div class="youth-space-bg" aria-hidden="true">
+    <div class="stars-layer"></div>
+    <div class="nebula-glow glow-cyan"></div>
+    <div class="nebula-glow glow-amber"></div>
+    <div class="orbit-grid"></div>
+  </div>
+
+  <!-- CABEÇALHO SUPERIOR -->
+  <header class="youth-topbar">
+    <a href="index.html" class="brand-area" title="Trocar perfil (Crianças / Jovens)">
+      <svg class="nasa-meatball" viewBox="0 0 120 100" aria-hidden="true">
+        <circle cx="60" cy="50" r="44" fill="#105bd8" />
+        <path d="M18 66 C 42 84, 92 64, 102 26 C 86 58, 44 74, 18 66 Z" fill="#ffffff" />
+        <path d="M14 68 L 54 14 L 66 56 L 106 20 L 63 65 L 51 27 Z" fill="#fc3d21" />
+        <text x="60" y="56" text-anchor="middle" fill="#ffffff" font-family="Georgia, serif" font-weight="900" font-size="22" letter-spacing="1.2">NASA</text>
+      </svg>
+      <span class="brand-sep"></span>
+      <span class="brand-title">
+        <strong>Exploradores do Espaço</strong>
+        <small>DIVISÃO JOVENS • TELEMETRIA & HISTÓRIA</small>
+      </span>
+    </a>
+
+    <!-- Barra de Busca Global -->
+    <div class="search-box-youth">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <circle cx="11" cy="11" r="7" />
+        <line x1="20" y1="20" x2="16.2" y2="16.2" />
+      </svg>
+      <input
+        type="search"
+        id="youth-search-input"
+        placeholder="Buscar Voyager 1, Pioneer 10, InSight, laser..."
+        aria-label="Buscar missão espacial"
+        autocomplete="off"
+      />
+    </div>
+
+    <!-- Acessibilidade Rápida (Áudio + Libras) e Perfil -->
+    <div class="topbar-actions">
+      <button type="button" id="btn-top-audio" class="hud-acc-btn btn-hud-audio" title="Ouvir briefing do TEX">
+        🔊 Ouvir TEX
+      </button>
+      <button type="button" id="btn-top-libras" class="hud-acc-btn btn-hud-libras" title="Ativar intérprete de Libras">
+        🖐️ Libras
+      </button>
+      <div class="xp-pill" title="Pontos de Exploração">
+        <span>⚡ XP:</span>
+        <strong id="youth-xp-counter">0</strong>
+      </div>
+      <a href="index.html" class="user-profile-pill" title="Voltar à seleção de perfil">
+        <img
+          id="avatar-tex-top"
+          src="tex.jpg"
+          data-fallbacks="tex.png,tex.jpeg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.jpg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.png"
+          alt="Copiloto TEX"
+        />
+        <span id="youth-user-name">Cadete</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- LAYOUT PRINCIPAL: SIDEBAR + CONTEÚDO MULTI-TELAS -->
+  <div class="youth-layout">
+    <!-- SIDEBAR DE NAVEGAÇÃO -->
+    <aside class="youth-sidebar" aria-label="Navegação principal">
+      <button type="button" class="nav-item active" data-view="painel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="1.5" />
+          <rect x="14" y="3" width="7" height="7" rx="1.5" />
+          <rect x="3" y="14" width="7" height="7" rx="1.5" />
+          <rect x="14" y="14" width="7" height="7" rx="1.5" />
+        </svg>
+        <span>Painel</span>
+      </button>
+
+      <button type="button" class="nav-item" data-view="dossies" data-destino="todos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+        </svg>
+        <span>9 Dossiês</span>
+      </button>
+
+      <button type="button" class="nav-item" data-view="dossies" data-destino="lua">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z" />
+        </svg>
+        <span>Lua</span>
+      </button>
+
+      <button type="button" class="nav-item" data-view="dossies" data-destino="marte">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="9" />
+        </svg>
+        <span>Marte</span>
+      </button>
+
+      <button type="button" class="nav-item" data-view="dossies" data-destino="profundo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3" />
+          <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-25 12 12)" />
+        </svg>
+        <span>Interestelar</span>
+      </button>
+
+      <button type="button" class="nav-item" data-view="desafios">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+        <span>Desafios</span>
+      </button>
+    </aside>
+
+    <!-- ÁREA DINÂMICA DAS TELAS -->
+    <main class="youth-main">
+
+      <!-- =========================================================
+           TELA 1: PAINEL PRINCIPAL (RADAR DE TELEMETRIA + TEX)
+           ========================================================= -->
+      <section id="view-painel" class="screen-section">
+        <!-- Banner do Copiloto TEX -->
+        <div class="tex-command-banner">
+          <div class="tex-command-left">
+            <img
+              id="tex-panel-img"
+              src="tex.jpg"
+              data-fallbacks="tex.png,tex.jpeg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.jpg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.png"
+              alt="Copiloto TEX"
+              class="tex-hud-avatar"
+            />
+            <div>
+              <span class="hud-badge">COPILOTO DE MISSÃO • TEX ONLINE</span>
+              <h1>Central de Exploração Espacial</h1>
+              <p id="tex-hud-speech">
+                Bem-vindo à base! Aqui você acompanha as 9 missões históricas da NASA na <strong>Lua</strong>, em <strong>Marte</strong> e no <strong>Espaço Interestelar</strong> — incluindo a Voyager 1 chegando a 1 dia-luz da Terra!
+              </p>
+            </div>
+          </div>
+
+          <div class="hud-kpi-group">
+            <div class="kpi-box">
+              <strong>9</strong>
+              <span>Missões Reais</span>
+            </div>
+            <div class="kpi-box kpi-green">
+              <strong>2</strong>
+              <span>Ainda Ativas</span>
+            </div>
+            <div class="kpi-box kpi-amber">
+              <strong>7</strong>
+              <span>Esquecidas / Silenciadas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Setores de Destino -->
+        <div class="sectors-grid">
+          <button type="button" class="sector-card sector-lua" data-jump-destino="lua">
+            <span class="sector-icon">🌕</span>
+            <div>
+              <h3>Setor Lunar</h3>
+              <p>Surveyor 3 & Retrorrefletores das Apollo 11, 14 e 15</p>
+            </div>
+            <span class="sector-arrow">Explorar →</span>
+          </button>
+
+          <button type="button" class="sector-card sector-marte" data-jump-destino="marte">
+            <span class="sector-icon">🔴</span>
+            <div>
+              <h3>Setor Marciano</h3>
+              <p>Viking 1, Pathfinder/Sojourner, Opportunity, Phoenix & InSight</p>
+            </div>
+            <span class="sector-arrow">Explorar →</span>
+          </button>
+
+          <button type="button" class="sector-card sector-deep" data-jump-destino="profundo">
+            <span class="sector-icon">🌌</span>
+            <div>
+              <h3>Espaço Profundo</h3>
+              <p>Pioneer 10 & Voyager 1 rumo às estrelas</p>
+            </div>
+            <span class="sector-arrow">Explorar →</span>
+          </button>
+        </div>
+
+        <!-- Barra de Filtros de Status + Lista de Missões -->
+        <div class="radar-toolbar">
+          <h2>Radar de Sondas e Experimentos</h2>
+          <div class="status-pills" role="tablist">
+            <button type="button" class="status-pill active" data-status="todos">Todos (9)</button>
+            <button type="button" class="status-pill" data-status="ativo">🟢 Ativos (2)</button>
+            <button type="button" class="status-pill" data-status="esquecido">🟡 Esquecidos (7)</button>
+          </div>
+        </div>
+
+        <div id="radar-missions-grid" class="radar-missions-grid"></div>
+      </section>
+
+      <!-- =========================================================
+           TELA 2: OS 9 DOSSIÊS ILUSTRADOS + LEITOR COM ÁUDIO E LIBRAS
+           ========================================================= -->
+      <section id="view-dossies" class="screen-section hidden">
+        <!-- Catálogo dos 9 Dossiês -->
+        <div id="dossies-catalog-block">
+          <div class="section-header-bar">
+            <div>
+              <span class="hud-badge">ARQUIVO HISTÓRICO NASA</span>
+              <h2 id="dossies-heading">Todos os 9 Dossiês Espaciais</h2>
+            </div>
+
+            <div class="destino-filter-pills">
+              <button type="button" class="dest-pill active" data-dest-filter="todos">🌌 Todos (9)</button>
+              <button type="button" class="dest-pill" data-dest-filter="lua">🌕 Lua (2)</button>
+              <button type="button" class="dest-pill" data-dest-filter="marte">🔴 Marte (5)</button>
+              <button type="button" class="dest-pill" data-dest-filter="profundo">🛰️ Espaço Profundo (2)</button>
+            </div>
+          </div>
+
+          <div id="dossies-cards-grid" class="dossies-cards-grid"></div>
+        </div>
+
+        <!-- Leitor Completo do Dossiê Selecionado -->
+        <div id="dossie-reader-block" class="dossie-reader-shell hidden" aria-live="polite">
+          <div class="reader-top-controls">
+            <button type="button" id="btn-back-dossies" class="btn-outline-hud">
+              ← Voltar aos Dossiês
+            </button>
+
+            <div class="reader-media-bar">
+              <button type="button" id="btn-read-play" class="btn-media btn-play">🔊 Ouvir Dossiê</button>
+              <button type="button" id="btn-read-pause" class="btn-media hidden">⏸️ Pausar</button>
+              <button type="button" id="btn-read-stop" class="btn-media hidden">⏹️ Parar</button>
+              <button type="button" id="btn-read-speed" class="btn-media">⚡ Vel: 1.0x</button>
+              <button type="button" id="btn-read-libras" class="btn-media btn-libras">🖐️ Traduzir em Libras</button>
+            </div>
+          </div>
+
+          <div class="reader-hero-grid">
+            <div>
+              <div id="reader-tags" class="reader-tags"></div>
+              <h2 id="reader-story-title">Título</h2>
+              <p id="reader-story-mission" class="reader-mission-sub">Missão</p>
+              <blockquote id="reader-story-intro" class="reader-intro-quote"></blockquote>
+            </div>
+
+            <div class="reader-tex-card">
+              <img
+                id="tex-reader-avatar"
+                src="tex.jpg"
+                data-fallbacks="tex.png,tex.jpeg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.jpg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.png"
+                alt="TEX analisando dossiê"
+              />
+              <div id="reader-tex-note">Análise do TEX carregada.</div>
+            </div>
+          </div>
+
+          <div id="reader-audio-indicator" class="reader-audio-indicator hidden">
+            <span>🎙️</span>
+            <span id="reader-audio-status">Lendo dossiê em voz alta...</span>
+          </div>
+
+          <!-- Cenas Ilustradas em Estilo Graphic Novel / Diagrama Técnico -->
+          <div id="reader-scenes-list" class="reader-scenes-list"></div>
+
+          <!-- Fatos de Verdade -->
+          <div class="facts-panel-youth">
+            <h3>📡 Fatos de Verdade • Registros Oficiais</h3>
+            <ul id="reader-true-facts"></ul>
+          </div>
+
+          <div class="reader-bottom-nav">
+            <button type="button" id="btn-prev-dossie" class="btn-outline-hud">⬅️ Dossiê Anterior</button>
+            <button type="button" id="btn-goto-desafios" class="btn-primary-hud">⚡ Testar Conhecimentos nos Desafios</button>
+            <button type="button" id="btn-next-dossie" class="btn-outline-hud">Próximo Dossiê ➡️</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           TELA 3: DESAFIOS INTERATIVOS & SIMULADOR DE SINAL
+           ========================================================= -->
+      <section id="view-desafios" class="screen-section hidden">
+        <div class="section-header-bar">
+          <div>
+            <span class="hud-badge">LABORATÓRIO INTERATIVO</span>
+            <h2>Desafios de Telemetria e Ciência Espacial</h2>
+          </div>
+
+          <div class="challenge-tabs">
+            <button type="button" class="chal-tab active" data-chal="classificar">🛰️ 1. Destino das 9 Missões</button>
+            <button type="button" class="chal-tab" data-chal="quiz">🧠 2. Quiz Científico</button>
+            <button type="button" class="chal-tab" data-chal="simulador">📡 3. Simulador de Luz & Rádio</button>
+          </div>
+        </div>
+
+        <!-- DESAFIO 1: CLASSIFICAÇÃO DAS 9 MISSÕES -->
+        <div id="chal-classificar" class="challenge-card">
+          <div class="chal-top">
+            <div>
+              <h3>Missão 1: Aloque cada sonda ao seu setor espacial</h3>
+              <p>Clique ou arraste cada equipamento para <strong>Lua</strong>, <strong>Marte</strong> ou <strong>Espaço Profundo</strong>.</p>
+            </div>
+            <button type="button" id="btn-reset-classificar" class="btn-outline-hud">🔄 Reiniciar</button>
+          </div>
+
+          <div id="youth-pool" class="youth-chips-pool"></div>
+
+          <div class="three-zones-grid">
+            <div class="drop-sector" data-sector="lua">
+              <h4>🌕 LUA</h4>
+              <small>Missões lunares</small>
+              <div class="sector-dropped" id="drop-lua"></div>
+            </div>
+
+            <div class="drop-sector" data-sector="marte">
+              <h4>🔴 MARTE</h4>
+              <small>Landers e rovers marcianos</small>
+              <div class="sector-dropped" id="drop-marte"></div>
+            </div>
+
+            <div class="drop-sector" data-sector="profundo">
+              <h4>🌌 ESPAÇO PROFUNDO</h4>
+              <small>Além de Júpiter e espaço interestelar</small>
+              <div class="sector-dropped" id="drop-profundo"></div>
+            </div>
+          </div>
+
+          <div id="classificar-done" class="victory-hud hidden">
+            <h3>🎉 Todas as 9 missões alocadas com precisão! (+25 XP)</h3>
+            <button type="button" class="btn-primary-hud" data-next-chal="quiz">Ir para o Quiz Científico →</button>
+          </div>
+        </div>
+
+        <!-- DESAFIO 2: QUIZ CIENTÍFICO -->
+        <div id="chal-quiz" class="challenge-card hidden">
+          <div class="chal-top">
+            <div>
+              <h3>Missão 2: Quiz Científico das 9 Histórias</h3>
+              <p id="youth-quiz-counter">Questão 1 de 7</p>
+            </div>
+            <button type="button" id="btn-speak-youth-quiz" class="btn-outline-hud">🔊 Ouvir Questão</button>
+          </div>
+
+          <div id="youth-quiz-box" class="youth-quiz-box">
+            <span id="youth-quiz-tag" class="hud-badge">MISSÃO</span>
+            <h4 id="youth-quiz-question">Carregando...</h4>
+            <div id="youth-quiz-options" class="youth-quiz-options"></div>
+            <div id="youth-quiz-feedback" class="youth-quiz-feedback hidden"></div>
+          </div>
+
+          <div id="youth-quiz-done" class="victory-hud hidden">
+            <h3 id="youth-quiz-result">🏆 Quiz Finalizado!</h3>
+            <div style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap; margin-top:0.75rem;">
+              <button type="button" id="btn-restart-youth-quiz" class="btn-outline-hud">🔄 Refazer Quiz</button>
+              <button type="button" class="btn-primary-hud" data-next-chal="simulador">Testar Simulador de Sinal →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- DESAFIO 3: SIMULADOR DE ATRASO DE SINAL (VELOCIDADE DA LUZ) -->
+        <div id="chal-simulador" class="challenge-card hidden">
+          <div class="chal-top">
+            <div>
+              <h3>Missão 3: Simulador de Comunicação na Velocidade da Luz</h3>
+              <p>Mesmo viajando a quase 300.000 km/s, ondas de rádio e lasers levam tempo para atravessar o espaço. Escolha um alvo para simular o envio de um comando!</p>
+            </div>
+            <button type="button" id="btn-speak-sim" class="btn-outline-hud">🔊 Ouvir Explicação</button>
+          </div>
+
+          <div class="sim-targets-row">
+            <button type="button" class="sim-target-btn active" data-target="lua">🌕 Espelhos Apollo (Lua)</button>
+            <button type="button" class="sim-target-btn" data-target="marte">🔴 Rovers em Marte</button>
+            <button type="button" class="sim-target-btn" data-target="pioneer">🛰️ Pioneer 10 (Último Sinal)</button>
+            <button type="button" class="sim-target-btn" data-target="voyager">✨ Voyager 1 (Nov 2026)</button>
+          </div>
+
+          <div class="sim-telemetry-display">
+            <div class="sim-track">
+              <div class="sim-node">🌍 Terra</div>
+              <div class="sim-beam-line">
+                <div id="sim-pulse-dot" class="sim-pulse-dot"></div>
+              </div>
+              <div class="sim-node" id="sim-dest-label">🌕 Lua</div>
+            </div>
+
+            <div class="sim-metrics-grid">
+              <div class="metric-card">
+                <span>Distância Aproximada</span>
+                <strong id="sim-distance">~384.400 km</strong>
+              </div>
+              <div class="metric-card">
+                <span>Tempo do Sinal</span>
+                <strong id="sim-time">~2,56 segundos (ida e volta)</strong>
+              </div>
+              <div class="metric-card">
+                <span>Precisão / Registro</span>
+                <strong id="sim-detail">Precisão de ~1 mm com laser</strong>
+              </div>
+            </div>
+
+            <p id="sim-explanation" class="sim-explanation-text">
+              Na Lua, os retrorrefletores das missões Apollo 11, 14 e 15 devolvem o pulso de laser da Terra em cerca de 2,5 segundos, permitindo medir a distância Terra-Lua com precisão de 1 milímetro!
+            </p>
+
+            <button type="button" id="btn-fire-signal" class="btn-primary-hud">
+              📡 Disparar Pulso de Sinal Agora
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="painel-jovens.js"></script>
+  <script src="libras.js"></script>
+</body>
+</html>

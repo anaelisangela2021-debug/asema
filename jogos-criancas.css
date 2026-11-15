@@ -1,0 +1,783 @@
+/* =========================================================
+   EXPLORADORES DO ESPAÇO — JOGOS CRIANÇAS (jogos-criancas.css)
+   ========================================================= */
+
+:root {
+  --sky-top: #071338;
+  --yellow-main: #facc15;
+  --yellow-bright: #fde047;
+  --ink-black: #0f172a;
+  --comic-paper: #fffdf7;
+  --font-kid: 'Fredoka', system-ui, sans-serif;
+  --font-clean: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100vh;
+  font-family: var(--font-kid);
+  color: #ffffff;
+  background-color: var(--sky-top);
+  overflow-x: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------
+   1. FUNDO ESPACIAL
+   --------------------------------------------------------- */
+.kids-space-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 15%, #1e40af 0%, #0d2159 55%, #060f2e 100%);
+  overflow: hidden;
+}
+
+.twinkle-stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 14% 16%, #fde047 90%, transparent),
+    radial-gradient(2.5px 2.5px at 32% 10%, #fff 90%, transparent),
+    radial-gradient(2px 2px at 54% 22%, #fde047 90%, transparent),
+    radial-gradient(2px 2px at 76% 14%, #fff 90%, transparent),
+    radial-gradient(2.5px 2.5px at 88% 35%, #fde047 90%, transparent);
+  background-size: 460px 460px;
+}
+
+.bg-moon {
+  position: absolute;
+  left: 4%;
+  top: 8%;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #e2e8f0 0%, #94a3b8 65%, #64748b 100%);
+  opacity: 0.45;
+}
+.bg-moon .crater { position: absolute; border-radius: 50%; background: rgba(71, 85, 105, 0.35); }
+.crater.cr1 { width: 32px; height: 32px; top: 38px; left: 40px; }
+.crater.cr2 { width: 20px; height: 20px; top: 88px; left: 32px; }
+.crater.cr3 { width: 38px; height: 38px; top: 72px; left: 82px; }
+
+.bg-jupiter {
+  position: absolute;
+  right: 9%;
+  top: 5%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  opacity: 0.55;
+  background: linear-gradient(165deg, #f97316, #fed7aa, #ea580c, #ffedd5, #9a3412);
+}
+
+.bg-earth {
+  position: absolute;
+  right: -40px;
+  bottom: 8%;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  opacity: 0.5;
+  background: radial-gradient(circle at 35% 30%, #38bdf8 0%, #2563eb 65%, #1e3a8a 100%);
+}
+
+.lunar-horizon {
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  bottom: -55px;
+  height: 115px;
+  border-radius: 50% 50% 0 0 / 40px 40px 0 0;
+  background: linear-gradient(180deg, #cbd5e1 0%, #64748b 100%);
+  opacity: 0.45;
+}
+
+/* ---------------------------------------------------------
+   2. CABEÇALHO E SIDEBAR
+   --------------------------------------------------------- */
+.kids-topbar {
+  position: relative;
+  z-index: 30;
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 0.85rem 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-area {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.nasa-meatball { width: 58px; height: 48px; }
+.brand-sep { width: 2px; height: 34px; background: rgba(255, 255, 255, 0.55); }
+.brand-title { display: flex; flex-direction: column; line-height: 1.05; font-size: 1.18rem; }
+.brand-star { width: 24px; height: 24px; }
+
+.topbar-right-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.stars-score-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(180deg, #fde047 0%, #facc15 100%);
+  color: var(--ink-black);
+  border: 2.5px solid var(--ink-black);
+  border-radius: 999px;
+  padding: 0.42rem 1rem;
+  font-size: 0.96rem;
+  font-weight: 700;
+  box-shadow: 3px 3px 0 var(--ink-black);
+}
+
+.profile-avatar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: #ffffff;
+  background: rgba(15, 37, 94, 0.78);
+  border: 1.5px solid rgba(147, 197, 253, 0.5);
+  padding: 0.3rem 0.9rem 0.3rem 0.35rem;
+  border-radius: 999px;
+}
+
+.avatar-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid var(--yellow-main);
+  background: #0b1b48;
+  overflow: hidden;
+}
+
+.avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.header-user-tag {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--yellow-bright);
+}
+
+.dashboard-layout {
+  position: relative;
+  z-index: 15;
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 0.2rem 1.8rem 2.5rem;
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  gap: 1.4rem;
+  align-items: start;
+}
+
+.kids-sidebar {
+  width: 104px;
+  background: rgba(11, 27, 72, 0.82);
+  border: 1.5px solid rgba(96, 165, 250, 0.38);
+  border-radius: 24px;
+  padding: 0.75rem 0.45rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  backdrop-filter: blur(10px);
+}
+
+.side-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.75rem 0.35rem;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.side-link svg { width: 24px; height: 24px; }
+.side-link:hover { background: rgba(255, 255, 255, 0.14); transform: scale(1.03); }
+.side-link.active {
+  background: linear-gradient(180deg, #fde047 0%, #facc15 100%);
+  color: var(--ink-black);
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(250, 204, 21, 0.45);
+}
+
+/* ---------------------------------------------------------
+   3. CABEÇALHO DO MASCOTE TEX E BOTÕES DE ACESSIBILIDADE
+   --------------------------------------------------------- */
+.games-hero-panel {
+  background: linear-gradient(180deg, rgba(21, 51, 126, 0.86) 0%, rgba(12, 31, 84, 0.94) 100%);
+  border: 2.5px solid rgba(96, 165, 250, 0.65);
+  border-radius: 28px;
+  padding: 1.15rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  backdrop-filter: blur(10px);
+}
+
+.tex-coach-box {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  flex: 1 1 480px;
+}
+
+.tex-coach-img {
+  width: 118px;
+  height: auto;
+  flex-shrink: 0;
+  animation: texFloat 3.4s ease-in-out infinite;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.55));
+}
+
+.tex-fallback-blend {
+  mix-blend-mode: lighten;
+}
+
+@keyframes texFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.comic-tag {
+  display: inline-block;
+  background: var(--yellow-main);
+  color: var(--ink-black);
+  font-family: var(--font-clean);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  border: 2px solid var(--ink-black);
+  margin-bottom: 0.35rem;
+}
+
+.tex-coach-bubble h1 {
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  color: var(--yellow-bright);
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.tex-coach-bubble p {
+  margin-top: 0.25rem;
+  font-family: var(--font-clean);
+  font-size: 0.94rem;
+  color: #e2e8f0;
+  line-height: 1.4;
+}
+
+.games-acc-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.acc-comic-btn {
+  border: 2.5px solid var(--ink-black);
+  border-radius: 999px;
+  padding: 0.55rem 1.05rem;
+  font-family: var(--font-kid);
+  font-size: 0.94rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink-black);
+  transition: transform 0.15s ease;
+}
+
+.acc-comic-btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-audio {
+  background: linear-gradient(180deg, #4ade80 0%, #22c55e 100%);
+  color: #052e16;
+}
+
+.btn-libras {
+  background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+  color: #ffffff;
+}
+
+/* ---------------------------------------------------------
+   4. ABAS DOS JOGOS E ARENA PRINCIPAL
+   --------------------------------------------------------- */
+.games-tabs-bar {
+  margin: 1.2rem 0;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.game-tab {
+  background: rgba(15, 37, 94, 0.85);
+  color: #ffffff;
+  border: 2.5px solid rgba(147, 197, 253, 0.55);
+  border-radius: 18px;
+  padding: 0.7rem 1.25rem;
+  font-family: var(--font-kid);
+  font-size: 1.02rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.game-tab:hover {
+  border-color: var(--yellow-bright);
+  transform: translateY(-2px);
+}
+
+.game-tab.active {
+  background: linear-gradient(180deg, #fde047 0%, #facc15 100%);
+  color: var(--ink-black);
+  border-color: var(--ink-black);
+  box-shadow: 4px 4px 0 var(--ink-black);
+}
+
+.game-arena-card {
+  background: linear-gradient(180deg, rgba(18, 45, 112, 0.9) 0%, rgba(10, 26, 72, 0.95) 100%);
+  border: 2.5px solid rgba(96, 165, 250, 0.7);
+  border-radius: 28px;
+  padding: 1.45rem 1.65rem 1.8rem;
+  box-shadow: 0 20px 50px rgba(2, 6, 23, 0.68);
+}
+
+.arena-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+  border-bottom: 2px dashed rgba(147, 197, 253, 0.35);
+}
+
+.arena-header h2 {
+  font-size: 1.45rem;
+  color: var(--yellow-bright);
+}
+
+.arena-header p {
+  font-family: var(--font-clean);
+  font-size: 0.92rem;
+  color: #e2e8f0;
+  margin-top: 0.2rem;
+}
+
+.btn-restart-mini {
+  background: #ffffff;
+  color: var(--ink-black);
+  border: 2.5px solid var(--ink-black);
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  font-family: var(--font-kid);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink-black);
+}
+
+.btn-restart-mini:hover {
+  background: var(--yellow-bright);
+}
+
+/* ---------------------------------------------------------
+   5. JOGO 1: LUA OU MARTE? (ARRASTAR OU CLICAR)
+   --------------------------------------------------------- */
+.robots-pool {
+  margin-top: 1.2rem;
+  min-height: 92px;
+  background: rgba(7, 19, 56, 0.65);
+  border: 2px dashed rgba(147, 197, 253, 0.45);
+  border-radius: 20px;
+  padding: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.robot-chip {
+  background: var(--comic-paper);
+  color: var(--ink-black);
+  border: 3px solid var(--ink-black);
+  border-radius: 16px;
+  padding: 0.55rem 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-kid);
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: grab;
+  box-shadow: 4px 4px 0 var(--ink-black);
+  transition: transform 0.16s ease, background 0.16s ease;
+  user-select: none;
+}
+
+.robot-chip:hover {
+  transform: translateY(-3px);
+  background: #fef9c3;
+}
+
+.robot-chip.selected {
+  background: var(--yellow-bright);
+  outline: 4px solid #38bdf8;
+  transform: scale(1.05);
+}
+
+.planets-drop-grid {
+  margin-top: 1.35rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.35rem;
+}
+
+.planet-dropzone {
+  min-height: 230px;
+  border-radius: 24px;
+  border: 3.5px solid var(--ink-black);
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.zone-lua {
+  background: radial-gradient(circle at 50% 20%, #3b82f6 0%, #1e3a8a 100%);
+  box-shadow: 6px 6px 0 #020617;
+}
+
+.zone-marte {
+  background: radial-gradient(circle at 50% 20%, #f97316 0%, #9a3412 100%);
+  box-shadow: 6px 6px 0 #020617;
+}
+
+.planet-dropzone.drag-over {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 5px var(--yellow-bright), 6px 6px 0 #020617;
+}
+
+.zone-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(15, 23, 42, 0.55);
+  padding: 0.65rem 0.95rem;
+  border-radius: 16px;
+}
+
+.zone-emoji {
+  font-size: 2rem;
+}
+
+.zone-header h3 {
+  font-size: 1.3rem;
+  color: var(--yellow-bright);
+}
+
+.zone-header small {
+  font-family: var(--font-clean);
+  color: #e2e8f0;
+}
+
+.dropped-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.placed-badge {
+  background: #dcfce7;
+  color: #14532d;
+  border: 2.5px solid var(--ink-black);
+  border-radius: 14px;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  box-shadow: 2px 2px 0 var(--ink-black);
+  animation: popIn 0.28s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.75); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ---------------------------------------------------------
+   6. JOGO 2: QUIZ DO TEX
+   --------------------------------------------------------- */
+.quiz-stage-box {
+  margin-top: 1.25rem;
+}
+
+.quiz-question-card {
+  background: var(--comic-paper);
+  color: var(--ink-black);
+  border: 3.5px solid var(--ink-black);
+  border-radius: 22px;
+  padding: 1.25rem 1.4rem;
+  box-shadow: 6px 6px 0 #020617;
+}
+
+.comic-pill-badge {
+  display: inline-block;
+  font-family: var(--font-clean);
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 0.22rem 0.7rem;
+  border-radius: 999px;
+  border: 2px solid var(--ink-black);
+  margin-bottom: 0.55rem;
+}
+
+.comic-pill-badge.lua { background: #dbeafe; color: #1e3a8a; }
+.comic-pill-badge.marte { background: #ffedd5; color: #9a3412; }
+
+.quiz-question-card h3 {
+  font-size: 1.32rem;
+  line-height: 1.35;
+}
+
+.quiz-options-grid {
+  margin-top: 1.1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.quiz-option-btn {
+  background: #ffffff;
+  color: var(--ink-black);
+  border: 3px solid var(--ink-black);
+  border-radius: 18px;
+  padding: 0.95rem 1.1rem;
+  text-align: left;
+  font-family: var(--font-clean);
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #020617;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.quiz-option-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  background: #fef9c3;
+}
+
+.quiz-option-btn.correct {
+  background: #86efac;
+  border-color: #14532d;
+}
+
+.quiz-option-btn.wrong {
+  background: #fecaca;
+  border-color: #7f1d1d;
+}
+
+.quiz-feedback {
+  margin-top: 1rem;
+  background: #fef08a;
+  color: var(--ink-black);
+  border: 2.5px solid var(--ink-black);
+  border-radius: 16px;
+  padding: 0.85rem 1.1rem;
+  font-family: var(--font-clean);
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ---------------------------------------------------------
+   7. JOGO 3: MEMÓRIA DAS MISSÕES
+   --------------------------------------------------------- */
+.memory-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.memory-grid {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+}
+
+.memory-card {
+  height: 122px;
+  background: linear-gradient(180deg, #2563eb 0%, #1e3a8a 100%);
+  border: 3.5px solid var(--ink-black);
+  border-radius: 20px;
+  box-shadow: 5px 5px 0 #020617;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem;
+  text-align: center;
+  color: #ffffff;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.memory-card:hover:not(.flipped):not(.matched) {
+  transform: translateY(-4px);
+  border-color: var(--yellow-bright);
+}
+
+.memory-card .card-front-icon {
+  font-size: 2rem;
+}
+
+.memory-card .card-back-content {
+  display: none;
+  font-family: var(--font-clean);
+  font-size: 0.86rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--ink-black);
+}
+
+.memory-card.flipped,
+.memory-card.matched {
+  background: var(--comic-paper);
+  color: var(--ink-black);
+}
+
+.memory-card.matched {
+  background: #bbf7d0;
+  cursor: default;
+}
+
+.memory-card.flipped .card-front-icon,
+.memory-card.matched .card-front-icon {
+  display: none;
+}
+
+.memory-card.flipped .card-back-content,
+.memory-card.matched .card-back-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* ---------------------------------------------------------
+   8. BANNER DE VITÓRIA
+   --------------------------------------------------------- */
+.victory-banner {
+  margin-top: 1.35rem;
+  background: linear-gradient(180deg, #fde047 0%, #facc15 100%);
+  color: var(--ink-black);
+  border: 3.5px solid var(--ink-black);
+  border-radius: 22px;
+  padding: 1.3rem;
+  text-align: center;
+  box-shadow: 6px 6px 0 #020617;
+}
+
+.victory-banner h3 {
+  font-size: 1.4rem;
+}
+
+.victory-banner p {
+  font-family: var(--font-clean);
+  font-size: 0.98rem;
+  margin: 0.4rem 0 0.95rem;
+}
+
+.victory-btns {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-next-game {
+  display: inline-block;
+  background: #2563eb;
+  color: #ffffff;
+  border: 2.5px solid var(--ink-black);
+  border-radius: 999px;
+  padding: 0.58rem 1.2rem;
+  font-family: var(--font-kid);
+  font-size: 0.96rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink-black);
+}
+
+/* ---------------------------------------------------------
+   9. RESPONSIVIDADE
+   --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .planets-drop-grid,
+  .quiz-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 780px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .kids-sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

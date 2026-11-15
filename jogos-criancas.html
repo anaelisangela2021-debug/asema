@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exploradores do Espaço — Jogos da Lua e de Marte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="jogos-criancas.css" />
+</head>
+<body>
+
+  <!-- CENÁRIO ESPACIAL DE FUNDO -->
+  <div class="kids-space-bg" aria-hidden="true">
+    <div class="twinkle-stars"></div>
+    <div class="bg-moon">
+      <span class="crater cr1"></span>
+      <span class="crater cr2"></span>
+      <span class="crater cr3"></span>
+    </div>
+    <div class="bg-jupiter"></div>
+    <div class="bg-earth"></div>
+    <div class="lunar-horizon"></div>
+  </div>
+
+  <!-- CABEÇALHO SUPERIOR -->
+  <header class="kids-topbar">
+    <a href="painel-criancas.html" class="brand-area" title="Voltar para o Painel Crianças">
+      <svg class="nasa-meatball" viewBox="0 0 120 100" aria-hidden="true">
+        <circle cx="60" cy="50" r="44" fill="#105bd8" />
+        <path d="M18 66 C 42 84, 92 64, 102 26 C 86 58, 44 74, 18 66 Z" fill="#ffffff" />
+        <path d="M14 68 L 54 14 L 66 56 L 106 20 L 63 65 L 51 27 Z" fill="#fc3d21" />
+        <text x="60" y="56" text-anchor="middle" fill="#ffffff" font-family="Georgia, serif" font-weight="900" font-size="22" letter-spacing="1.2">NASA</text>
+      </svg>
+      <span class="brand-sep"></span>
+      <span class="brand-title">
+        <strong>Exploradores</strong>
+        <strong>do Espaço</strong>
+      </span>
+      <svg class="brand-star" viewBox="0 0 24 24" fill="#facc15" aria-hidden="true">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      </svg>
+    </a>
+
+    <!-- Placar de Estrelas + Perfil TEX -->
+    <div class="topbar-right-group">
+      <div class="stars-score-pill" title="Suas estrelas espaciais conquistadas">
+        <span>⭐ Estrelas:</span>
+        <strong id="stars-counter">0</strong>
+      </div>
+
+      <a href="painel-criancas.html" class="profile-avatar-btn" title="Voltar ao Início">
+        <div class="avatar-circle">
+          <img
+            id="avatar-tex-img"
+            src="tex.jpg"
+            data-fallbacks="tex.png,tex.jpeg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.jpg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.png"
+            alt="Mascote TEX"
+          />
+        </div>
+        <span id="header-user-name" class="header-user-tag">Explorador(a)</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- LAYOUT PRINCIPAL: SIDEBAR + ARENA DE JOGOS -->
+  <div class="dashboard-layout">
+    <!-- SIDEBAR LATERAL (APENAS INÍCIO, LUA, MARTE, JOGOS) -->
+    <aside class="sidebar-column">
+      <nav class="kids-sidebar" aria-label="Menu de navegação">
+        <a href="painel-criancas.html" class="side-link">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z" />
+          </svg>
+          <span>Início</span>
+        </a>
+
+        <a href="historias-criancas.html?local=lua" class="side-link">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z" />
+          </svg>
+          <span>Lua</span>
+        </a>
+
+        <a href="historias-criancas.html?local=marte" class="side-link">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="9" />
+          </svg>
+          <span>Marte</span>
+        </a>
+
+        <a href="jogos-criancas.html" class="side-link active">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+          </svg>
+          <span>Jogos</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ÁREA CENTRAL DE JOGOS -->
+    <main class="center-stage">
+
+      <!-- CABEÇALHO DO TEX + CONTROLES DE ÁUDIO E LIBRAS -->
+      <section class="games-hero-panel">
+        <div class="tex-coach-box">
+          <img
+            id="tex-games-img"
+            src="tex.jpg"
+            data-fallbacks="tex.png,tex.jpeg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.jpg,Gemini_Generated_Image_4clldn4clldn4cll-Photoroom.png"
+            alt="Mascote TEX treinador espacial"
+            class="tex-coach-img"
+          />
+          <div class="tex-coach-bubble">
+            <span class="comic-tag">DESAFIOS DO TEX • LUA E MARTE</span>
+            <h1>Treinamento de Explorador Espacial!</h1>
+            <p id="tex-coach-message">
+              Escolha um jogo abaixo e mostre tudo o que você aprendeu sobre os robôs da Lua e de Marte! 🚀
+            </p>
+          </div>
+        </div>
+
+        <div class="games-acc-actions">
+          <button type="button" id="btn-ouvir-tex" class="acc-comic-btn btn-audio">
+            🔊 Ouvir Dica do TEX
+          </button>
+          <button type="button" id="btn-libras-jogos" class="acc-comic-btn btn-libras">
+            🖐️ Traduzir em Libras
+          </button>
+        </div>
+      </section>
+
+      <!-- ABAS DE SELEÇÃO DOS 3 JOGOS -->
+      <nav class="games-tabs-bar" aria-label="Escolha o jogo">
+        <button type="button" class="game-tab active" data-game="destino">
+          🪐 1. Lua ou Marte?
+        </button>
+        <button type="button" class="game-tab" data-game="quiz">
+          🧠 2. Quiz do TEX
+        </button>
+        <button type="button" class="game-tab" data-game="memoria">
+          🃏 3. Memória das Missões
+        </button>
+      </nav>
+
+      <!-- =========================================================
+           JOGO 1: LUA OU MARTE? (ARRASTAR OU CLICAR)
+           ========================================================= -->
+      <section id="game-destino" class="game-arena-card">
+        <div class="arena-header">
+          <div>
+            <h2>Missão 1: Onde cada equipamento pousou?</h2>
+            <p>Arraste o robô (ou clique nele e depois clique na <strong>Lua</strong> ou em <strong>Marte</strong>)!</p>
+          </div>
+          <button type="button" id="btn-reset-destino" class="btn-restart-mini">🔄 Recomeçar</button>
+        </div>
+
+        <!-- Fichas dos equipamentos para classificar -->
+        <div id="robots-pool" class="robots-pool" aria-label="Equipamentos para classificar"></div>
+
+        <!-- Zonas de Destino: Lua e Marte -->
+        <div class="planets-drop-grid">
+          <div class="planet-dropzone zone-lua" data-planet="lua" tabindex="0" role="button" aria-label="Soltar equipamento na Lua">
+            <div class="zone-header">
+              <span class="zone-emoji">🌕</span>
+              <div>
+                <h3>LUA</h3>
+                <small>Satélite natural da Terra</small>
+              </div>
+            </div>
+            <div class="dropped-items" id="dropped-lua"></div>
+          </div>
+
+          <div class="planet-dropzone zone-marte" data-planet="marte" tabindex="0" role="button" aria-label="Soltar equipamento em Marte">
+            <div class="zone-header">
+              <span class="zone-emoji">🔴</span>
+              <div>
+                <h3>MARTE</h3>
+                <small>O Planeta Vermelho</small>
+              </div>
+            </div>
+            <div class="dropped-items" id="dropped-marte"></div>
+          </div>
+        </div>
+
+        <div id="destino-victory" class="victory-banner hidden">
+          <h3>🎉 Parabéns, Explorador(a)! Você acertou todos os pousos na Lua e em Marte!</h3>
+          <p>Você ganhou <strong>+10 Estrelas Espaciais</strong>!</p>
+          <button type="button" class="btn-next-game" data-goto="quiz">Ir para o Quiz do TEX ➡️</button>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           JOGO 2: QUIZ ESPACIAL DO TEX
+           ========================================================= -->
+      <section id="game-quiz" class="game-arena-card hidden">
+        <div class="arena-header">
+          <div>
+            <h2>Missão 2: Quiz Espacial do TEX</h2>
+            <p id="quiz-progress-text">Pergunta 1 de 6</p>
+          </div>
+          <button type="button" id="btn-ler-pergunta" class="btn-restart-mini">🔊 Ouvir Pergunta</button>
+        </div>
+
+        <div id="quiz-stage" class="quiz-stage-box">
+          <div class="quiz-question-card">
+            <span id="quiz-badge-local" class="comic-pill-badge lua">🌕 Lua</span>
+            <h3 id="quiz-question-text">Carregando pergunta...</h3>
+          </div>
+
+          <div id="quiz-options-grid" class="quiz-options-grid"></div>
+
+          <div id="quiz-feedback" class="quiz-feedback hidden"></div>
+        </div>
+
+        <div id="quiz-victory" class="victory-banner hidden">
+          <h3 id="quiz-final-title">🏆 Quiz Concluído!</h3>
+          <p id="quiz-final-score">Você acertou X de 6 perguntas!</p>
+          <div class="victory-btns">
+            <button type="button" id="btn-reset-quiz" class="btn-restart-mini">🔄 Jogar Quiz Novamente</button>
+            <button type="button" class="btn-next-game" data-goto="memoria">Ir para Memória das Missões ➡️</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           JOGO 3: MEMÓRIA DAS MISSÕES (ROBÔ ↔ SUPERPODER)
+           ========================================================= -->
+      <section id="game-memoria" class="game-arena-card hidden">
+        <div class="arena-header">
+          <div>
+            <h2>Missão 3: Memória das Missões da NASA</h2>
+            <p>Encontre os pares combinando cada equipamento com sua história!</p>
+          </div>
+          <div class="memory-stats">
+            <span>Pares: <strong id="memory-pairs-count">0/6</strong></span>
+            <button type="button" id="btn-reset-memoria" class="btn-restart-mini">🔄 Embaralhar</button>
+          </div>
+        </div>
+
+        <div id="memory-grid" class="memory-grid"></div>
+
+        <div id="memoria-victory" class="victory-banner hidden">
+          <h3>🌟 Memória de Astronauta! Você encontrou todos os pares!</h3>
+          <p>Você ganhou <strong>+10 Estrelas Espaciais</strong>!</p>
+          <div class="victory-btns">
+            <button type="button" id="btn-play-again-memoria" class="btn-restart-mini">🔄 Jogar de Novo</button>
+            <a href="historias-criancas.html" class="btn-next-game">📖 Reler as Histórias</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="jogos-criancas.js"></script>
+  <script src="libras.js"></script>
+</body>
+</html>
